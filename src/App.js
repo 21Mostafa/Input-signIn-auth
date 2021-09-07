@@ -5,7 +5,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut ,createUserWithEm
 import { useState } from 'react';
  
 
-                      // Google Login Startup
+                                                      // Google Login Startup
  
 firebase.initializeApp(firebaseConfig);
  
@@ -51,8 +51,8 @@ function App() {
       });
    }
 
-                                    //THIS ONE ALSO USES
-                                    //START :1
+                                                                  //THIS ONE ALSO USES
+                                                                  //START :1
 
    const signOuts = () => {
     const auth = getAuth();
@@ -67,15 +67,15 @@ function App() {
         success: false,
       }                                         
       setUser(signOutUsers); })
-                                            //THE END :1
+                                                                       //THE END :1
 
                                             
       .catch((error) => {
       
     });  
     
-   }                                      //Google login end
-                                        // Facebook Login  Start 
+                              }                                      //Google login end
+                                                                    // Facebook Login  Start 
 
 
 
@@ -84,40 +84,33 @@ function App() {
                const handleFbSignIn = () => {
                 const auth = getAuth();
                 signInWithPopup(auth, fbprovider)
-                  .then((result) => {
-                    // The signed-in user info.
+                  .then((result) => {                    
                     const user = result.user;
-                    console.log("Fb user after sign in",user);
-                
-                    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                    console.log("Fb user after sign in",user);             
+                    
                     const credential = FacebookAuthProvider.credentialFromResult(result);
-                    const accessToken = credential.accessToken;
-                
-                    // ...
+                    const accessToken = credential.accessToken;              
+                    
                   })
-                  .catch((error) => {
-                    // Handle Errors here.
+                  .catch((error) => {                   
                     const errorCode = error.code;
-                    const errorMessage = error.message;
-                    // The email of the user's account used.
-                    const email = error.email;
-                    // The AuthCredential type that was used.
-                    const credential = FacebookAuthProvider.credentialFromError(error);
-                
-                    // ...
+                    const errorMessage = error.message;                     
+                    const email = error.email;                     
+                    const credential = FacebookAuthProvider.credentialFromError(error);               
+                     
                   });
                }
                
                
-                                  // Facebook Login  End 
+                                                             // Facebook Login  End 
 
 
 
 
 
 
-                                                //NEW password/email  // Main Start
-                                                //START :2
+                                                                //NEW password/email  // Main Start
+                                                                //START :2
 
 
 
@@ -166,6 +159,7 @@ function App() {
    }
 
 
+
    const handleBlur = (event) => {  
       let isFieldValid =   true;
       if (event.target.name === "email") {
@@ -197,7 +191,7 @@ function App() {
                 });    
 
    }
-                                      //THE END :2                                  
+                                                                    //THE END :2                                  
 
 
 
@@ -217,9 +211,9 @@ function App() {
          
                  </div>}
                            
-                                            {/* NEW password/email */}
+                                                                {/* NEW password/email */}
 
-                                            {/* START :3 */}
+                                                                {/* START :3 */}
 
 
               <h1>Our Own Authentication</h1>
@@ -236,7 +230,7 @@ function App() {
                {user.error &&  <p style={{color:"red"}}> The email address is already in use by another account</p>}
               {user.success && <p style={{color:"green"}}>User {newUser ?"Created" : "Logged In"}  Successfully </p>}
 
-                                                        {/* THE END :3 */}
+                                                              {/* THE END :3 */}
 
     </div>
   );
